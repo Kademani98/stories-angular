@@ -1,0 +1,17 @@
+<div class="main-container">
+    <div class="heading">
+        <p>Stories...</p>
+    </div>
+    <div class="story-bar">
+        <input type="file" accept="image/*" (change)="addStory($event)" hidden #fileInput>
+        <button class="add-button" (click)="fileInput.click()">+</button>
+    
+        <div class="stories">
+            <div class="story" *ngFor="let story of stories; let i = index" (click)="openViewer(i)">
+                <img [src]="story.imageBase64" alt="story" />
+            </div>
+        </div>
+    
+        <app-story-viewer *ngIf="showViewer" [stories]="stories" [startIndex]="selectedIndex" (closed)="onViewerClosed()" />
+    </div>
+</div>

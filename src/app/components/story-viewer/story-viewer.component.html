@@ -1,0 +1,19 @@
+<div class="viewer-wrapper" id="story-viewer">
+    <div class="progress-container">
+      <div
+        *ngFor="let story of stories; let i = index; trackBy: trackByFn"
+        class="progress-bar"
+      >
+        <div
+          class="progress-fill"
+          [style.width.%]="progress[i]"
+          [class.active]="i === currentIndex"
+        ></div>
+      </div>
+    </div>
+  
+    <img class="story-image" [src]="stories[currentIndex].imageBase64" />
+  
+    <button class="done-btn" (click)="closeViewer()">Done</button>
+  </div>
+  
